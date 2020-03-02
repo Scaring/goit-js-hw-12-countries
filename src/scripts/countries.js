@@ -11,7 +11,9 @@ input.addEventListener('input', debounce(searchFromInputFinish, 1000));
 
 function searchFromInputFinish(e) {
   const searchQuery = e.target.value;
+  if (searchQuery === '') return;
   clearCountries();
+
   fetchCountries(searchQuery).then(data => {
     const countriesCount = data.length;
     if (countriesCount == 1) {
